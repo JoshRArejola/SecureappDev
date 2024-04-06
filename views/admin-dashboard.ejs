@@ -4,14 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
+  <style>
+    .loggedIn { color: green; }
+  </style>
 </head>
 <body>
   <h1>Welcome to the Admin Dashboard</h1>
-  <h2>All Users' Information:</h2>
-  <ul>
-    <% users.forEach(function(user) { %>
-      <li><strong>Role:</strong> <%= user.role %>, <strong>Name:</strong> <%= user.name %>, <strong>Password:</strong> <%= user.password %></li> 
-    <% }); %>
-  </ul>
+  <div id="userInfo">
+    <h2>All Users' Information:</h2>
+    <ul>
+      <% users.forEach(function(user) { %>
+        <li>
+          <strong>Role:</strong> <%= user.role %>,
+          <strong>Name:</strong> <%= user.name %>,
+          <% if (loggedInUser === user.name) { %>
+            <span class="loggedIn">Logged in</span>
+          <% } %>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
 </body>
 </html>
